@@ -13,7 +13,7 @@ const cities = [
     { name: "巴黎", coords: [48.8566, 2.3522], visited: true, photos: ["path/to/paris1.jpg", "path/to/paris2.jpg"] },
     { name: "纽约", coords: [40.7128, -74.0060], visited: false, photos: [] },
     { name: "悉尼", coords: [-33.8688, 151.2093], visited: false, photos: [] },
-    { name: "北京", coords: [39.9042, 116.4074], visited: true, photos: ["path/to/beijing1.jpg"] },
+    { name: "北京", coords: [39.9042, 116.4074], visited: true, url: "/DD-family/cities/Beijing/" },
     { name: "伦敦", coords: [51.5074, -0.1278], visited: false, photos: [] },
     { name: "莫斯科", coords: [55.7558, 37.6173], visited: false, photos: [] },
     { name: "开罗", coords: [30.0444, 31.2357], visited: true, photos: ["path/to/cairo1.jpg"] },
@@ -23,9 +23,9 @@ const cities = [
     // 添加新城市
     { name: "斯图加特", coords: [48.7758, 9.1829], visited: true, photos: ["path/to/stuttgart1.jpg"] },
     { name: "苏黎世", coords: [47.3769, 8.5417], visited: false, photos: [] },
-    { name: "南京", coords: [32.0603, 118.7969], visited: true, photos: ["path/to/nanjing1.jpg"] },
+    { name: "南京", coords: [32.0603, 118.7969], visited: true, url: "/DD-family/cities/Nanjing" },
     { name: "六合（南京）", coords: [32.3463, 118.8482], visited: true, photos: ["path/to/liuhe1.jpg"] },
-    { name: "香港", coords: [22.3193, 114.1694], visited: true, photos: ["path/to/hongkong1.jpg"] },
+    { name: "香港", coords: [22.3193, 114.1694], visited: true, url: "/DD-family/cities/Hong Kong"},
     { name: "长春", coords: [43.8171, 125.3235], visited: true, photos: ["path/to/changchun1.jpg"] },
     { name: "哈尔滨", coords: [45.8038, 126.5350], visited: false, photos: [] },
     { name: "广州", coords: [23.1291, 113.2644], visited: true, photos: ["path/to/guangzhou1.jpg"] },
@@ -47,22 +47,27 @@ const cities = [
 
 // 添加所有城市到地图
 cities.forEach(city => {
-    // 设置去过和没去过的样式，减小圆的直径
+    // 设置去过和没去过的样式
     const marker = L.circleMarker(city.coords, {
-        radius: 5, // 减小半径
+        radius: 5, // 圆直径
         color: city.visited ? 'green' : 'gray', // 绿色表示去过，灰色表示未去过
         fillColor: city.visited ? 'lightgreen' : 'lightgray',
         fillOpacity: 0.8
     }).addTo(map);
 
-    if (city.visited) {
-        // 去过的城市添加交互
+    if (city.visited && city.url) {
+        // 去过的城市，添加点击跳转功能
+        marker.on('click', () => {
+            window.location.href = city.url; // 跳转到指定链接
+        });
+    } else if (city.visited) {
+        // 去过但没有 URL 的城市，显示图片弹窗
         marker.bindPopup(`
             <b>${city.name}</b><br>
             ${city.photos.map(photo => `<img src="${photo}" class="popup-img" alt="${city.name}" />`).join('')}
         `);
     } else {
-        // 没去过的城市显示提示
+        // 未去过的城市显示提示
         marker.bindPopup(`<b>${city.name}</b><br>未去过`);
     }
 });

@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>我的旅行地图</title>
+    <title>Diandian Map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
     <style>
-        #map { height: 600px; }
-        .popup-img { width: 200px; margin-top: 10px; }
-        body { font-family: Arial, sans-serif; }
+        #map {
+            height: 90vh; /* 地图高度改为视窗高度的 90% */
+            width: 100vw; /* 地图宽度占满整个页面 */
+        }
+        .popup-img {
+            width: 200px;
+            margin-top: 10px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0; /* 去掉页面默认外边距 */
+            padding: 0; /* 去掉页面默认内边距 */
+        }
+        h1 {
+            text-align: center; /* 标题居中 */
+            margin: 20px 0; /* 调整标题的外边距 */
+        }
     </style>
 </head>
 <body>
-    <h1>我的旅行地图</h1>
+    <h1>Diandian Map</h1>
     <div id="map"></div>
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="map.js"></script> <!-- 地图逻辑 -->
