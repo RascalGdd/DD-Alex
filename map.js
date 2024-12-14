@@ -38,7 +38,6 @@ const cities = [
 { name: "法兰克福", coords: [50.1109, 8.6821], visited: true, photos: ["path/to/frankfurt1.jpg"] },
 { name: "慕尼黑", coords: [48.1351, 11.5820], visited: true, photos: ["path/to/munich1.jpg"] },
 { name: "摩洛哥", coords: [31.7917, -7.0926], visited: true, photos: ["path/to/morocco1.jpg"] },
-{ name: "特罗姆瑟", coords: [69.6496, 18.9560], visited: true, photos: ["path/to/tromso1.jpg"] },
 { name: "巴登巴登", coords: [48.7606, 8.2398], visited: true, photos: ["path/to/badenbaden1.jpg"] },
 { name: "费城", coords: [39.9526, -75.1652], visited: true, photos: ["path/to/philadelphia1.jpg"] },
 { name: "上海", coords: [31.2304, 121.4737], visited: true, photos: ["path/to/shanghai1.jpg"] },
